@@ -17,8 +17,6 @@ mrcrypt is a command-line tool which encrypts secrets that conform to the AWS En
 
 Because mrcrypt follows the AWS Encryption SDK's message format, files encrypted by mrcrypt can also be decrypted by the AWS Encryption SDKs for Python and Java. This allows application developers to build robust in-app decryption solutions.
 
-mrcrypt itself does not use the AWS Encryption SDK for Python, as it was written prior to its release. However, future releases may decide to do so.
-
 Installation
 ============
 
@@ -184,6 +182,11 @@ Compatability with the AWS Encryption SDK
 **All files encrypted with mrcrypt can be decrypted with the AWS
 Encryption SDK.** But not all files encrypted with the AWS Encryption
 SDK can be decrypted by mrcrypt.
+
+mrcrypt itself does not use the 
+`AWS Encryption SDK for Python <https://github.com/awslabs/aws-encryption-sdk-python>`__,
+as it was written prior to its release. However, future releases may
+decide to do so.
 
 Currently, mrcrypt only supports the AWS Encryption SDK's default (and
 most secure) cryptographic algorithm:
