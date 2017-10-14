@@ -15,7 +15,7 @@ mrcrypt: Multi-Region Encryption
 
 mrcrypt is a command-line tool which encrypts secrets that conform to the AWS Encryption SDK's `message format <http://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/message-format.html>`__ for envelope encryption. Envelope encryption is used to encrypt a file using a KMS data key. That data key is then encrypted with regional KMS Customer Master Keys. Each regionally encrypted data key is then stored in the encrypted message. When decrypting, the appropriate regional CMK is used to decrypt the data key, and the data key is then used to decrypt the file. In other words, encrypt once - decrypt from anywhere.
 
-Because mrcrypt follows the AWS Encryption SDK's message format, files encrypted by mrcrypt can also be decrypted using the AWS Encryption SDK for Java. See the section titled `Compatability with the AWS Encryption SDK for Java <#compatability-with-the-aws-encryption-sdk-for-java>`__ for details.
+Because mrcrypt follows the AWS Encryption SDK's message format, files encrypted by mrcrypt can also be decrypted using the AWS Encryption SDK for Java. For details, see the section titled `Compatability with the AWS Encryption SDK for Java <#compatability-with-the-aws-encryption-sdk-for-java>`__.
 
 Installation
 ============
