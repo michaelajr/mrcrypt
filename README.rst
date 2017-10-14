@@ -15,7 +15,7 @@ mrcrypt: Multi-Region Encryption
 
 mrcrypt is a command-line tool which encrypts secrets that conform to the AWS Encryption SDK's `message format <http://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/message-format.html>`__ for envelope encryption. Envelope encryption is used to encrypt a file using a KMS data key. That data key is then encrypted with regional KMS Customer Master Keys. Each regionally encrypted data key is then stored in the encrypted message. When decrypting, the appropriate regional CMK is used to decrypt the data key, and the data key is then used to decrypt the file. In other words, encrypt once - decrypt from anywhere.
 
-Because mrcrypt follows the AWS Encryption SDK's message format, files encrypted by mrcrypt can also be decrypted using the AWS Encryption SDK for Java. See the section titled `Compatability with the AWS Encryption SDK <#compatability-with-the-aws-encryption-sdk>`__ for details.
+Because mrcrypt follows the AWS Encryption SDK's message format, files encrypted by mrcrypt can also be decrypted using the AWS Encryption SDK for Java. See the section titled `Compatability with the AWS Encryption SDK for Java <#compatability-with-the-aws-encryption-sdk-for-java>`__ for details.
 
 Installation
 ============
@@ -176,19 +176,14 @@ Testing
 Running tests for mrcrypt is easy if you have ``tox`` installed. Simply
 run ``tox`` at the project's root.
 
-Compatability with the AWS Encryption SDK
-=========================================
+Compatability with the AWS Encryption SDK for Java
+==================================================
 
 **All files encrypted with mrcrypt can be decrypted with the AWS
-Encryption SDK.** But not all files encrypted with the AWS Encryption
-SDK can be decrypted by mrcrypt.
+Encryption SDK for Java.** But not all files encrypted with the AWS Encryption
+SDK for Java can be decrypted by mrcrypt.
 
-mrcrypt itself does not use the 
-`AWS Encryption SDK for Python <https://github.com/awslabs/aws-encryption-sdk-python>`__,
-as it was written prior to its release. However, future releases may
-decide to do so.
-
-Currently, mrcrypt only supports the AWS Encryption SDK's default (and
+Currently, mrcrypt only supports the AWS Encryption SDK for Java's default (and
 most secure) cryptographic algorithm:
 
 -  Content Type: Framed
@@ -196,14 +191,14 @@ most secure) cryptographic algorithm:
 -  Algorithm: ALG\_AES\_256\_GCM\_IV12\_TAG16\_HKDF\_SHA384\_ECDSA\_P384
 
 Support for the remaining algorithms are planned, but files encrypted
-with the AWS Encryption SDK using one of the other algorithms are
+with the AWS Encryption SDK for Java using one of the other algorithms are
 currently not supported in mrcrypt.
 
-Also, the AWS Encryption SDK creates files using elliptic curve point
+Also, the AWS Encryption SDK for Java creates files using elliptic curve point
 compression. Files created with mrcrypt do not use point compression
 because they are not currently supported in
 `Cryptography <https://github.com/pyca/cryptography>`__, a Python
 package mrcrypt uses. The uncompressed points are just as secure as the
 compressed points, but files are a few bytes larger. The AWS Encryption
-SDK can decrypt files that use uncompressed points, meaning all files
-created with mrcrypt are compatible with the AWS Encryption SDK.
+SDK for Java can decrypt files that use uncompressed points, meaning all files
+created with mrcrypt are compatible with the AWS Encryption SDK for Java.
